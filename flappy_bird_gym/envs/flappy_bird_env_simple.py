@@ -75,8 +75,8 @@ class FlappyBirdEnvSimple(gym.Env):
                  background: Optional[str] = "day") -> None:
         self.action_space = gym.spaces.Discrete(2)
 
-        low_bounds = np.array([0, -0.5], dtype=np.float32)
-        high_bounds = np.array([2, 0.5], dtype=np.float32)
+        low_bounds = np.array([-2, -1], dtype=np.float32)
+        high_bounds = np.array([2, 1], dtype=np.float32)
 
         self.observation_space = gym.spaces.Box(low_bounds, high_bounds,
                                                 shape=(2,),
@@ -143,9 +143,9 @@ class FlappyBirdEnvSimple(gym.Env):
         obs = self._get_observation()
         
         if alive:
-            reward = 1
+            reward = 15
         else:
-            reward = -100
+            reward = -1000
 
         done = not alive
         info = {"score": self._game.score}
